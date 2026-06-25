@@ -10,6 +10,7 @@ import ThemeToggle from './ui/ThemeToggle';
 const NAV_ITEMS = [
   { label: 'Journey', href: '/#journey' },
   { label: 'Expertise', href: '/#expertise' },
+  { label: 'Certifications', href: '/certifications' },
   { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   { label: 'AI Showcase', href: '/#ai-showcase' },
