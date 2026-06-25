@@ -28,14 +28,22 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="md:col-span-5 flex flex-col space-y-4">
-            <div>
-              <span className="font-heading font-bold text-2xl tracking-tight text-primary dark:text-foreground">
-                RAHUL V. <span className="text-secondary">JADHAV</span>
-              </span>
-              <p className="text-xs uppercase tracking-widest text-muted mt-1 font-semibold">
-                Operations & Growth Executive
-              </p>
-            </div>
+            <Link href="/" className="flex items-center gap-3 focus:outline-none h-11 w-64 select-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" className="w-full h-full text-foreground">
+                {/* Monogram Circle Symbol */}
+                <circle cx="25" cy="30" r="20" fill="none" stroke="#EDC531" strokeWidth="1.5" />
+                <circle cx="25" cy="30" r="17" fill="none" stroke="#EDC531" strokeWidth="0.5" strokeDasharray="2 1" />
+                <text x="25" y="35" fontFamily="Georgia, serif" fontWeight="bold" fontSize="13" fill="#EDC531" textAnchor="middle">RVJ</text>
+                
+                {/* Text Section */}
+                <text x="60" y="26" fontFamily="var(--font-heading), system-ui, sans-serif" fontWeight="800" fontSize="18.5" fill="currentColor" letterSpacing="0.5">
+                  RAHUL V. <tspan fill="#EDC531">JADHAV</tspan>
+                </text>
+                <text x="60" y="43" fontFamily="system-ui, sans-serif" fontWeight="600" fontSize="8" fill="#8892B0" letterSpacing="2">
+                  OPERATIONS &amp; GROWTH EXECUTIVE
+                </text>
+              </svg>
+            </Link>
             <p className="text-sm text-muted max-w-sm leading-relaxed">
               Building High-Performance Teams, Scalable Business Systems, and AI-Powered Growth Engines. Transforming organizations through operational excellence and digital innovation.
             </p>

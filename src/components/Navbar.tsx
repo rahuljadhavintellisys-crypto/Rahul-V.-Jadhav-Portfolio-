@@ -45,13 +45,21 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo / Brand Name */}
-          <Link href="/" className="flex flex-col focus:outline-none">
-            <span className="font-heading font-bold text-xl sm:text-2xl tracking-tight text-primary dark:text-foreground">
-              RAHUL V. <span className="text-secondary">JADHAV</span>
-            </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-muted">
-              Operations & Growth Executive
-            </span>
+          <Link href="/" className="flex items-center gap-3 focus:outline-none h-11 w-64 select-none">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" className="w-full h-full text-foreground">
+              {/* Monogram Circle Symbol */}
+              <circle cx="25" cy="30" r="20" fill="none" stroke="#EDC531" strokeWidth="1.5" />
+              <circle cx="25" cy="30" r="17" fill="none" stroke="#EDC531" strokeWidth="0.5" strokeDasharray="2 1" />
+              <text x="25" y="35" fontFamily="Georgia, serif" fontWeight="bold" fontSize="13" fill="#EDC531" textAnchor="middle">RVJ</text>
+              
+              {/* Text Section */}
+              <text x="60" y="26" fontFamily="var(--font-heading), system-ui, sans-serif" fontWeight="800" fontSize="18.5" fill="currentColor" letterSpacing="0.5">
+                RAHUL V. <tspan fill="#EDC531">JADHAV</tspan>
+              </text>
+              <text x="60" y="43" fontFamily="system-ui, sans-serif" fontWeight="600" fontSize="8" fill="#8892B0" letterSpacing="2">
+                OPERATIONS &amp; GROWTH EXECUTIVE
+              </text>
+            </svg>
           </Link>
 
           {/* Desktop Navigation */}
