@@ -1,0 +1,47 @@
+[
+  {
+    "id": "t-1",
+    "name": "Rutik Bhosle",
+    "role": "CEO & Director",
+    "company": "Intellisys IT Solutions",
+    "content": "Rahul is a rare operations leader who combines deep technical understanding with executive strategic vision. He designed and implemented accountability systems that transformed our delivery capacity, resulting in a consistent 98.5% SLA rate and a highly motivated team.",
+    "category": "leadership",
+    "avatarUrl": ""
+  },
+  {
+    "id": "t-2",
+    "name": "Evelyn Carter",
+    "role": "Editor-in-Chief",
+    "company": "The Star Prime Magazine",
+    "content": "Under Rahul's operations management, Star Prime transitioned from manual spreadsheet-heavy tasks to the Star Prime AI OS. His leadership has streamlined our publication process, reduced editorial overhead by 70%, and enabled us to scale our media coverage.",
+    "category": "client",
+    "avatarUrl": ""
+  },
+  {
+    "id": "t-3",
+    "name": "Ajay Rathod",
+    "role": "Team Lead",
+    "company": "CIO Outlook Magazine",
+    "content": "Working under Rahul's leadership during our scaling initiatives, I saw first-hand how he manages to motivate teams while maintaining high performance. His focus on operations excellence and personal branding is inspiring.",
+    "category": "team",
+    "avatarUrl": ""
+  },
+  {
+    "id": "t-4",
+    "name": "Ananya Joshi",
+    "role": "Founder",
+    "company": "TechVanguard",
+    "content": "Rahul's consultative approach to AI workflow automation helped us overhaul our client communication system. The custom dashboards he outlined saved our team over 10 hours a week and made our project execution completely transparent.",
+    "category": "client",
+    "avatarUrl": ""
+  },
+  {
+    "id": "t-5",
+    "name": "Swapnil Deshmukh",
+    "role": "Chief Human Resource Officer (CHRO)",
+    "company": "Intellisys IT Solutions",
+    "content": "Rahul's operations framework has dramatically improved company culture and team performance. By introducing transparent progression playbooks alongside Excel-based SLA trackers, he aligned developer goals with people-centric empathy, reducing hybrid team turnover by 30%.",
+    "category": "leadership",
+    "avatarUrl": ""
+  }
+]

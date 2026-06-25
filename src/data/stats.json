@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "label": "Years of Experience",
+    "value": 4,
+    "suffix": "+"
+  },
+  {
+    "id": "2",
+    "label": "Projects Managed",
+    "value": 30,
+    "suffix": "+"
+  },
+  {
+    "id": "3",
+    "label": "Business Leaders Connected",
+    "value": 200,
+    "suffix": "+"
+  },
+  {
+    "id": "4",
+    "label": "Partnerships Developed",
+    "value": 15,
+    "suffix": "+"
+  },
+  {
+    "id": "5",
+    "label": "Teams Led",
+    "value": 45,
+    "suffix": "+"
+  },
+  {
+    "id": "6",
+    "label": "Growth Campaigns Executed",
+    "value": 12,
+    "suffix": "+"
+  }
+]

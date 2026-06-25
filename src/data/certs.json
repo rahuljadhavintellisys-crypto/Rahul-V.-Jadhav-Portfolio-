@@ -1,0 +1,65 @@
+[
+  {
+    "id": "cert-certified-ai-professional",
+    "title": "Become a Certified AI Professional in 2026",
+    "organization": "WsCube Tech",
+    "issueDate": "2026-06",
+    "verifyUrl": "/docs/certified-ai-professional-2026.pdf",
+    "imageUrl": "/images/certified-ai-professional-2026.png",
+    "tags": ["AI Tools", "AI Professional", "Automation"]
+  },
+  {
+    "id": "cert-ai-tools-mastery",
+    "title": "AI Tools Mastery Workshop",
+    "organization": "Clapingo",
+    "issueDate": "2026-06",
+    "verifyUrl": "/docs/ai-tools-mastery-workshop.pdf",
+    "imageUrl": "/images/ai-tools-mastery-workshop.png",
+    "tags": ["AI Tools", "ChatGPT", "Prompt Engineering"]
+  },
+  {
+    "id": "cert-digital-marketing-webinar",
+    "title": "Digital Marketing Webinar",
+    "organization": "Brand Monk Academy & N.S.D.C",
+    "issueDate": "2026-06",
+    "verifyUrl": "/docs/digital-marketing-webinar.pdf",
+    "imageUrl": "/images/digital-marketing-webinar.png",
+    "tags": ["Digital Marketing", "Webinar", "Marketing Strategy"]
+  },
+  {
+    "id": "cert-ops-mgmt",
+    "title": "Operations Leadership & Strategy",
+    "organization": "Project Management Institute (PMI) / Authorized Partner",
+    "issueDate": "2024-11",
+    "verifyUrl": "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    "imageUrl": "",
+    "tags": ["Operations", "Strategy", "Leadership"]
+  },
+  {
+    "id": "cert-ai-biz-transformation",
+    "title": "AI & Digital Transformation Professional",
+    "organization": "Google Cloud & Coursera",
+    "issueDate": "2025-03",
+    "verifyUrl": "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    "imageUrl": "",
+    "tags": ["AI", "Automation", "Digital Transformation"]
+  },
+  {
+    "id": "cert-biz-growth-sales",
+    "title": "Strategic Business Development & Scaling",
+    "organization": "HubSpot Academy",
+    "issueDate": "2023-08",
+    "verifyUrl": "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    "imageUrl": "",
+    "tags": ["Business Development", "Sales", "HubSpot"]
+  },
+  {
+    "id": "cert-agile-pm",
+    "title": "Agile Project Management Specialist",
+    "organization": "Scrum Alliance",
+    "issueDate": "2024-02",
+    "verifyUrl": "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    "imageUrl": "",
+    "tags": ["Project Management", "Agile", "Scrum"]
+  }
+]

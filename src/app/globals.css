@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #111827;
+  --card: #F9FAFB;
+  --card-foreground: #111827;
+  --primary: #0F4C81;
+  --primary-hover: #0C3E69;
+  --secondary: #D4AF37;
+  --secondary-hover: #C5A030;
+  --border: #E5E7EB;
+  --muted: #6B7280;
+  --accent: #F3F4F6;
+}
+
+.dark {
+  --background: #0B1020; /* Premium Executive Deep Midnight Navy */
+  --foreground: #F9FAFB; /* Premium light text */
+  --card: #111827; /* Premium Card Gray-Dark */
+  --card-foreground: #F9FAFB;
+  --primary: #3B82F6; /* Accessibility contrast blue */
+  --primary-hover: #60A5FA;
+  --secondary: #D4AF37; /* Premium Gold Accent */
+  --secondary-hover: #F5E08F;
+  --border: #1E293B;
+  --muted: #9CA3AF;
+  --accent: #1E293B;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Luxury Corporate Gradient & Grid Utilities */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C5A030 0%, #F5E08F 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0F4C81 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-luxury-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 76, 129, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 76, 129, 0.04) 1px, transparent 1px);
+}
+
+.dark .bg-luxury-grid {
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.15);
+}
+
+.blue-glow {
+  box-shadow: 0 0 25px -5px rgba(15, 76, 129, 0.15);
+}
