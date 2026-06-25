@@ -69,7 +69,7 @@ export default function ExecutivePerspective() {
             <img
               src="/images/rahul.png"
               alt="Rahul V. Jadhav Portrait"
-              className="absolute inset-0 w-full h-full object-cover object-top filter grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
+              className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-500"
             />
             {/* Elegant overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-black/50 via-transparent to-transparent pointer-events-none" />

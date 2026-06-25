@@ -167,7 +167,7 @@ export default function HeroSection() {
               <img
                 src="/images/rahul.png"
                 alt="Rahul V. Jadhav"
-                className="w-full h-full object-cover object-top filter grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700"
+                className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-all duration-700"
               />
               {/* Overlay styling for modern dark tone */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1020]/20 to-transparent pointer-events-none mix-blend-multiply" />
