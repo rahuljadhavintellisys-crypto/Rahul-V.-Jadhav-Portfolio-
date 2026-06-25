@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, Linkedin, Globe, Download, MessageSquare, MapPin, UserCheck, Shield } from 'lucide-react';
+import { Phone, Mail, Linkedin, Globe, Download, MessageSquare, MapPin, Shield, Share2, Check } from 'lucide-react';
 
 export default function VCardPage() {
+  const [copied, setCopied] = useState(false);
+
   const handleDownload = () => {
     const vcardData = `BEGIN:VCARD
 VERSION:3.0
@@ -27,6 +30,30 @@ END:VCARD`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'Rahul V. Jadhav - Digital Business Card',
+      text: 'Connect with Rahul V. Jadhav, Head of Team Operations. Save contact details and view verified credentials.',
+      url: window.location.origin + '/vcard',
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        // Ignore share cancellation
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.origin + '/vcard');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error('Could not copy text: ', err);
+      }
+    }
   };
 
   return (
@@ -65,13 +92,30 @@ END:VCARD`;
           </span>
         </div>
 
-        {/* Download VCard trigger */}
-        <button
-          onClick={handleDownload}
-          className="w-full inline-flex items-center justify-center gap-2 bg-primary text-white dark:bg-secondary dark:text-background font-bold py-3.5 px-4 rounded text-sm hover:opacity-90 transition-opacity cursor-pointer focus:outline-none"
-        >
-          <Download className="h-4.5 w-4.5" /> Save Contact Details
-        </button>
+        {/* Actions Row */}
+        <div className="flex gap-3">
+          <button
+            onClick={handleDownload}
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-white dark:bg-secondary dark:text-background font-bold py-3.5 px-3 rounded text-xs sm:text-sm hover:opacity-90 transition-opacity cursor-pointer focus:outline-none"
+          >
+            <Download className="h-4 w-4 shrink-0" /> Save Contact
+          </button>
+          
+          <button
+            onClick={handleShare}
+            className="flex-1 border border-border bg-background text-foreground hover:bg-accent inline-flex items-center justify-center gap-2 font-bold py-3.5 px-3 rounded text-xs sm:text-sm transition-colors cursor-pointer focus:outline-none"
+          >
+            {copied ? (
+              <>
+                <Check className="h-4 w-4 text-emerald-500 shrink-0" /> Copied!
+              </>
+            ) : (
+              <>
+                <Share2 className="h-4 w-4 text-secondary shrink-0" /> Share Card
+              </>
+            )}
+          </button>
+        </div>
 
         <div className="h-[1px] bg-border/60" />
 
