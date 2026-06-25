@@ -39,9 +39,13 @@ END:VCARD`;
         <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-secondary/10 rounded-full blur-2xl pointer-events-none" />
 
-        {/* Initials Avatar */}
-        <div className="h-20 w-20 rounded-full bg-primary text-white dark:bg-secondary dark:text-background flex items-center justify-center font-heading font-extrabold text-2xl mx-auto shadow-md border-2 border-border/20 relative group">
-          RVJ
+        {/* Profile Picture Avatar */}
+        <div className="h-20 w-20 rounded-full border-2 border-border/20 shadow-md mx-auto relative overflow-hidden group">
+          <img 
+            src="/images/rahul.png" 
+            alt="Rahul V. Jadhav" 
+            className="w-full h-full object-cover"
+          />
           <span className="absolute bottom-0 right-0 h-4 w-4 bg-emerald-500 rounded-full border-2 border-card" />
         </div>
 

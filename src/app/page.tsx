@@ -6,6 +6,7 @@ import AboutSection from '@/components/AboutSection';
 import ExecutivePerspective from '@/components/ExecutivePerspective';
 import AchievementsSection from '@/components/AchievementsSection';
 import TimelineSection from '@/components/TimelineSection';
+import CertificationsTeaser from '@/components/CertificationsTeaser';
 import FeaturedProjectsSection from '@/components/FeaturedProjectsSection';
 import AIShowcase from '@/components/AIShowcase';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -26,6 +27,7 @@ export default function Home() {
         <ExecutivePerspective />
         <AchievementsSection />
         <TimelineSection />
+        <CertificationsTeaser />
         <FeaturedProjectsSection initialProjects={projects} />
         <AIShowcase />
         <TestimonialsSection initialTestimonials={testimonials} />
