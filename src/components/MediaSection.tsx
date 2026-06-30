@@ -50,6 +50,15 @@ const ITEMS: Publication[] = [
     imageUrl: "/images/IMG_20251119_095737_240.png"
   },
   {
+    title: "Operations Blueprint Podcast: Scaling B2B Client Portfolios",
+    source: "Growth Executive Series",
+    type: "Podcast",
+    desc: "Rahul V. Jadhav talks about B2B growth execution, team accountability frameworks, lead operations pipelines, and digital workflow migrations in a feature-length guest interview.",
+    date: "February 2025",
+    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    imageUrl: "/images/rahul-podcast-image.jpg"
+  },
+  {
     title: "Executive Profile Feature: Operations & Growth Strategy",
     source: "CIO Outlook Magazine",
     type: "Feature",
@@ -110,6 +119,7 @@ export default function MediaSection() {
                         <span className={`text-[9px] font-extrabold uppercase px-2 py-0.5 rounded tracking-wide ${
                           item.type === 'Award' ? 'bg-amber-500/10 text-amber-500' :
                           item.type === 'Feature' ? 'bg-primary/10 text-primary dark:text-secondary' :
+                          item.type === 'Podcast' ? 'bg-emerald-500/10 text-emerald-500' :
                           'bg-sky-500/10 text-sky-500'
                         }`}>
                           {item.type}
@@ -119,6 +129,7 @@ export default function MediaSection() {
                       
                       <div className="text-muted group-hover:text-primary dark:group-hover:text-secondary transition-colors md:hidden">
                         {item.type === 'Award' ? <Award className="h-5 w-5" /> :
+                         item.type === 'Podcast' ? <Radio className="h-5 w-5" /> :
                          <BookOpen className="h-5 w-5" />}
                       </div>
                     </div>
