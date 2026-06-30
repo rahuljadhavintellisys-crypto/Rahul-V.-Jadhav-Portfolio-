@@ -264,6 +264,47 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
+            {/* Key Benchmarks Table */}
+            <div className="border border-border bg-background p-5 rounded-lg space-y-3.5 shadow-sm">
+              <div className="flex items-center gap-2 border-b border-border/40 pb-2.5">
+                <span className="h-2 w-2 rounded-full bg-secondary animate-pulse" />
+                <span className="font-heading font-extrabold text-xs uppercase tracking-wider text-foreground">Operational KPIs & Target Benchmarks</span>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-[11px] text-muted text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-border/60 text-secondary uppercase font-bold text-[9px] tracking-wider">
+                      <th className="pb-2">Performance Vector</th>
+                      <th className="pb-2 text-center">Baseline</th>
+                      <th className="pb-2 text-right">Actual Peak</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border/30">
+                    <tr className="hover:bg-accent/40 transition-colors">
+                      <td className="py-2.5 font-medium text-foreground">SLA Sprint Compliance</td>
+                      <td className="py-2.5 text-center">88.0%</td>
+                      <td className="py-2.5 text-right text-secondary font-bold">98.5%</td>
+                    </tr>
+                    <tr className="hover:bg-accent/40 transition-colors">
+                      <td className="py-2.5 font-medium text-foreground">Outbound Pipeline Lift</td>
+                      <td className="py-2.5 text-center">+15%</td>
+                      <td className="py-2.5 text-right text-emerald-500 font-bold">+40%</td>
+                    </tr>
+                    <tr className="hover:bg-accent/40 transition-colors">
+                      <td className="py-2.5 font-medium text-foreground">Team Reporting Overhead</td>
+                      <td className="py-2.5 text-center">12 hrs/wk</td>
+                      <td className="py-2.5 text-right text-secondary font-bold">3.5 hrs/wk</td>
+                    </tr>
+                    <tr className="hover:bg-accent/40 transition-colors">
+                      <td className="py-2.5 font-medium text-foreground">FTE Attrition Rate</td>
+                      <td className="py-2.5 text-center">Standard</td>
+                      <td className="py-2.5 text-right text-emerald-500 font-bold">-30% Drop</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
           </div>
         </div>
 
