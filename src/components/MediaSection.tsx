@@ -152,11 +152,11 @@ export default function MediaSection() {
                 </div>
 
                 {item.imageUrl && (
-                  <div className="w-full md:w-32 h-40 md:h-auto rounded-lg border border-border/80 overflow-hidden shrink-0 relative shadow-md">
+                  <div className="w-full md:w-48 aspect-video md:aspect-[4/3] rounded-lg border border-border/80 overflow-hidden shrink-0 relative shadow-md bg-stone-900/20">
                     <img 
                       src={item.imageUrl} 
                       alt={item.title} 
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
                 )}
