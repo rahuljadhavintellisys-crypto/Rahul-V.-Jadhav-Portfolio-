@@ -40,6 +40,17 @@ export default function SchedulePage() {
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [alternativeSlots, setAlternativeSlots] = useState<string[]>([]);
+  const [icsData, setIcsData] = useState('');
+  const [meetingUrl, setMeetingUrl] = useState('');
+  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [lastBooking, setLastBooking] = useState<{
+    name: string;
+    email: string;
+    date: string;
+    time: string;
+    meetingLink: string;
+  } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -56,6 +67,7 @@ export default function SchedulePage() {
 
     setStatus('loading');
     setErrorMsg('');
+    setAlternativeSlots([]);
 
     const meetingTitle = MEETING_TYPES.find(m => m.id === formData.selectedMeeting)?.title || 'Meeting';
 
@@ -73,11 +85,34 @@ export default function SchedulePage() {
         }),
       });
 
+      const data = await response.json();
+
+      if (response.status === 409) {
+        setStatus('error');
+        setErrorMsg(data.message || 'This time slot is already booked.');
+        if (data.alternatives) {
+          setAlternativeSlots(data.alternatives);
+        }
+        return;
+      }
+
       if (!response.ok) {
-        throw new Error('Failed to schedule meeting request.');
+        throw new Error(data.message || 'Failed to schedule meeting request.');
       }
 
       setStatus('success');
+      setIcsData(data.icsContent || '');
+      setMeetingUrl(data.meetingLink || '');
+      setIsEmailSent(data.emailSent || false);
+      
+      setLastBooking({
+        name: formData.name,
+        email: formData.email,
+        date: formData.proposedDate,
+        time: formData.proposedTime,
+        meetingLink: data.meetingLink || '',
+      });
+
       setFormData({
         name: '',
         email: '',
@@ -91,6 +126,19 @@ export default function SchedulePage() {
       setStatus('error');
       setErrorMsg(err.message || 'An unexpected error occurred. Please try again.');
     }
+  };
+
+  const handleDownloadICS = () => {
+    if (!icsData || !lastBooking) return;
+    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `consultation-${lastBooking.date}-${lastBooking.time}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -256,23 +304,86 @@ export default function SchedulePage() {
                   />
                 </div>
 
-                {status === 'success' && (
-                  <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 p-4 rounded flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="block font-bold text-sm">Meeting Request Sent</span>
-                      <p className="text-xs">Your consultation slot request has been logged. Rahul's coordinator will email an invite block shortly.</p>
+                {status === 'success' && lastBooking && (
+                  <div className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 p-5 rounded-lg space-y-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="block font-bold text-sm">Meeting Request Sent & Confirmed</span>
+                        <p className="text-xs">Your consultation slot request has been logged successfully.</p>
+                      </div>
                     </div>
+                    
+                    <div className="text-xs space-y-2 border-t border-emerald-500/20 pt-3">
+                      <p><strong>Scheduled Time:</strong> {lastBooking.date} at {lastBooking.time}</p>
+                      {meetingUrl && (
+                        <p>
+                          <strong>Video Conference Room:</strong>{' '}
+                          <a 
+                            href={meetingUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="underline font-bold text-primary dark:text-secondary hover:opacity-80 transition-opacity"
+                          >
+                            Join Video Call
+                          </a>
+                        </p>
+                      )}
+                      {isEmailSent ? (
+                        <p className="text-emerald-700 dark:text-emerald-300">
+                          ✉️ A calendar invitation has been sent from Rahul's office to your email (<strong>{lastBooking.email}</strong>).
+                        </p>
+                      ) : (
+                        <p className="text-emerald-700/80 dark:text-emerald-400/80">
+                          Click below to download the calendar event and import it into your calendar directly (Google Calendar, Outlook, etc.):
+                        </p>
+                      )}
+                    </div>
+
+                    {icsData && (
+                      <button
+                        type="button"
+                        onClick={handleDownloadICS}
+                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded text-xs transition-colors cursor-pointer"
+                      >
+                        Download Calendar Invite (.ics)
+                      </button>
+                    )}
                   </div>
                 )}
 
                 {status === 'error' && (
-                  <div className="bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 p-4 rounded flex items-start gap-3">
-                    <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="block font-bold text-sm">Request Failed</span>
-                      <p className="text-xs">{errorMsg}</p>
+                  <div className="space-y-3">
+                    <div className="bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 p-4 rounded flex items-start gap-3">
+                      <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="block font-bold text-sm">Request Failed</span>
+                        <p className="text-xs">{errorMsg}</p>
+                      </div>
                     </div>
+
+                    {alternativeSlots.length > 0 && (
+                      <div className="border border-border/80 bg-card p-4 rounded-lg space-y-2">
+                        <span className="block text-xs font-bold text-muted uppercase">Suggested Alternative Times:</span>
+                        <div className="flex flex-wrap gap-2">
+                          {alternativeSlots.map((slot) => (
+                            <button
+                              key={slot}
+                              type="button"
+                              onClick={() => {
+                                setFormData(prev => ({ ...prev, proposedTime: slot }));
+                                setAlternativeSlots([]);
+                                setErrorMsg('');
+                                setStatus('idle');
+                              }}
+                              className="bg-primary/10 hover:bg-primary/20 text-primary dark:bg-secondary/10 dark:hover:bg-secondary/20 dark:text-secondary border border-primary/20 dark:border-secondary/20 text-xs font-bold py-1.5 px-3 rounded cursor-pointer"
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
 

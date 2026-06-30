@@ -1,5 +1,13 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/db/store';
+import nodemailer from 'nodemailer';
+import { 
+  hasConflict, 
+  parseInquirySlot, 
+  getAlternativeSlots, 
+  getDurationFromSubject, 
+  generateICS 
+} from './bookingHelper';
 
 export async function POST(request: Request) {
   try {
@@ -14,6 +22,71 @@ export async function POST(request: Request) {
       );
     }
 
+    const isMeetingRequest = subject.startsWith('Meeting Request:') && message.includes('Proposed Date:');
+    let meetingLink = '';
+    let icsContent = '';
+
+    if (isMeetingRequest) {
+      const dateMatch = message.match(/Proposed Date:\s*([^\n]+)/);
+      const timeMatch = message.match(/Proposed Time:\s*([^\n]+)/);
+      
+      if (dateMatch && timeMatch) {
+        const proposedDate = dateMatch[1].trim();
+        const proposedTime = timeMatch[1].trim();
+        const duration = getDurationFromSubject(subject);
+        
+        const proposedSlot = {
+          date: proposedDate,
+          time: proposedTime,
+          duration,
+        };
+        
+        const existingInquiries = db.getInquiries();
+        
+        if (hasConflict(proposedSlot, existingInquiries)) {
+          const alternatives = getAlternativeSlots(proposedSlot, existingInquiries);
+          return NextResponse.json(
+            { 
+              message: 'This time block is already booked. Please choose an alternative time.',
+              conflict: true,
+              alternatives 
+            },
+            { status: 409 }
+          );
+        }
+
+        // Generate meeting invite video link
+        const randomId = Math.random().toString(36).substring(2, 9);
+        const useZoom = message.toLowerCase().includes('zoom');
+        
+        if (useZoom && process.env.MEETING_LINK_ZOOM) {
+          meetingLink = process.env.MEETING_LINK_ZOOM;
+        } else if (process.env.MEETING_LINK_TEAMS) {
+          meetingLink = process.env.MEETING_LINK_TEAMS;
+        } else {
+          // Dynamic zero-config video meeting room (default fallback)
+          meetingLink = `https://meet.jit.si/rahulvjadhav-consultation-${randomId}`;
+        }
+
+        // Generate calendar event (.ics)
+        const notesMatch = message.match(/Notes:\s*([\s\S]*)/);
+        const pNotes = notesMatch ? notesMatch[1].trim() : '';
+        const inviteId = Math.random().toString(36).substring(2, 9);
+
+        icsContent = generateICS({
+          id: inviteId,
+          title: subject.replace('Meeting Request: ', ''),
+          date: proposedDate,
+          time: proposedTime,
+          duration,
+          name,
+          email,
+          notes: pNotes,
+          meetingLink,
+        });
+      }
+    }
+
     // Add to DB store
     const inquiry = db.addInquiry({
       name,
@@ -21,11 +94,68 @@ export async function POST(request: Request) {
       phone: phone || '',
       company: company || '',
       subject,
-      message,
+      message: isMeetingRequest && meetingLink 
+        ? `${message}\nMeeting Video Link: ${meetingLink}` 
+        : message,
     });
 
+    // SMTP Email Delivery
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = process.env.SMTP_PORT;
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
+    const personalEmail = process.env.PERSONAL_EMAIL || smtpUser || 'rahuljadhav.vj@gmail.com';
+
+    let emailSent = false;
+
+    if (isMeetingRequest && icsContent && smtpHost && smtpUser && smtpPass) {
+      try {
+        const dateMatch = message.match(/Proposed Date:\s*([^\n]+)/);
+        const timeMatch = message.match(/Proposed Time:\s*([^\n]+)/);
+        const notesMatch = message.match(/Notes:\s*([\s\S]*)/);
+        const pDate = dateMatch ? dateMatch[1].trim() : '';
+        const pTime = timeMatch ? timeMatch[1].trim() : '';
+        const pNotes = notesMatch ? notesMatch[1].trim() : '';
+
+        const transporter = nodemailer.createTransport({
+          host: smtpHost,
+          port: Number(smtpPort) || 587,
+          secure: smtpPort === '465',
+          auth: {
+            user: smtpUser,
+            pass: smtpPass,
+          },
+        });
+
+        // Email with calendar event attachment
+        const mailOptions = {
+          from: `"Rahul V. Jadhav Office" <${personalEmail}>`,
+          replyTo: email,
+          to: [personalEmail, email],
+          subject: `Meeting Confirmed: ${subject.replace('Meeting Request: ', '')}`,
+          text: `Hi ${name},\n\nYour consultation session has been successfully booked.\n\nSession Parameters:\n- Date: ${pDate}\n- Time: ${pTime}\n- Join Video Call: ${meetingLink}\n- Agenda Context: ${pNotes}\n\nA calendar invite (.ics) file is attached. Opening it will add this event directly into your personal calendar (Google Calendar, Outlook, etc.).\n\nThank you,\nRahul V. Jadhav Office`,
+          icalEvent: {
+            filename: 'invite.ics',
+            method: 'REQUEST',
+            content: icsContent,
+          },
+        };
+
+        await transporter.sendMail(mailOptions);
+        emailSent = true;
+      } catch (mailError) {
+        console.error('Nodemailer failed to transmit schedule email:', mailError);
+      }
+    }
+
     return NextResponse.json(
-      { message: 'Inquiry received successfully.', inquiry },
+      { 
+        message: 'Inquiry received successfully.', 
+        inquiry,
+        icsContent,
+        emailSent,
+        meetingLink,
+      },
       { status: 200 }
     );
   } catch (error) {
@@ -36,3 +166,4 @@ export async function POST(request: Request) {
     );
   }
 }
+
