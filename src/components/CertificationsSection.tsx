@@ -150,8 +150,8 @@ export default function CertificationsSection({ initialCerts }: CertificationsSe
 
       {/* Dynamic Certificate Vector Viewer Modal */}
       {selectedCert && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-card border border-border rounded-xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-card border border-border rounded-xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl space-y-6 max-h-[95vh] overflow-y-auto">
             
             {/* Close button */}
             <button
@@ -170,7 +170,7 @@ export default function CertificationsSection({ initialCerts }: CertificationsSe
 
             {/* Dynamic Certificate Mockup / Real Scanned Image / PDF Embed */}
             {selectedCert.verifyUrl && selectedCert.verifyUrl.toLowerCase().endsWith('.pdf') ? (
-              <div className="w-full h-[450px] sm:h-[550px] relative bg-stone-100 border border-border rounded overflow-hidden shadow-inner">
+              <div className="w-full aspect-[1.414/1] max-h-[55vh] relative bg-stone-100 border border-border rounded overflow-hidden shadow-inner">
                 <iframe 
                   src={`${selectedCert.verifyUrl}#toolbar=0&navpanes=0`} 
                   className="w-full h-full border-none"
@@ -236,18 +236,29 @@ export default function CertificationsSection({ initialCerts }: CertificationsSe
             )}
 
             {/* Action buttons */}
-            <div className="flex justify-end gap-3 pt-2">
+            <div className="flex flex-wrap justify-end gap-3 pt-2 border-t border-border/40">
               <button
                 onClick={() => setSelectedCert(null)}
                 className="border border-border bg-background text-foreground font-bold text-xs px-5 py-2.5 rounded hover:bg-accent transition-colors cursor-pointer"
               >
                 Close Preview
               </button>
+              
+              {selectedCert.verifyUrl.startsWith('/docs/') && (
+                <a
+                  href={selectedCert.verifyUrl}
+                  download
+                  className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded transition-colors cursor-pointer"
+                >
+                  Download PDF
+                </a>
+              )}
+
               <a
                 href={selectedCert.verifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 bg-primary text-white dark:bg-secondary dark:text-background font-bold text-xs px-5 py-2.5 rounded hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-1.5 bg-primary text-white dark:bg-secondary dark:text-background font-bold text-xs px-5 py-2.5 rounded hover:opacity-90 transition-opacity cursor-pointer"
               >
                 {selectedCert.verifyUrl.startsWith('/docs/') ? 'View PDF Document' : 'Verify Credential'} <ExternalLink className="h-3.5 w-3.5" />
               </a>
