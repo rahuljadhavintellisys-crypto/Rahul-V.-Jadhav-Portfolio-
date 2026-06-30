@@ -17,43 +17,46 @@ const ITEMS: Publication[] = [
     title: "Team Captain Excellence Award: Operations & B2B Leadership",
     source: "Insights Success & CIO Outlook Magazine",
     type: "Award",
-    desc: "Recognized as a Team Captain for outstanding execution, stakeholder coordination, and scaling high-performance sales and operations teams.",
+    desc: "Rahul V. Jadhav receiving the Team Captain Excellence Award on stage, presented in recognition of outstanding team leadership, cross-functional stakeholder coordination, and scaling high-performance sales and operations teams.",
     date: "June 2026",
     link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
     imageUrl: "/images/IMG_20240526_181808_814.png"
   },
   {
-    title: "Operations Excellence: Redefining Agile Sprints for Hybrid IT Teams",
-    source: "The Star Prime Magazine",
+    title: "Keynote Address: Outbound Sales Automation & Team Alignment",
+    source: "The Star Prime Publications",
     type: "Feature",
-    desc: "A detailed review detailing how operations leaders can use automated SLA trackers to decrease development delays and boost B2B delivery speeds.",
+    desc: "Rahul V. Jadhav presenting a keynote briefing on outbound sales development, detailing Sales Navigator, Apollo.io, and HubSpot lead pipeline automations for scaling enterprise business client acquisitions.",
     date: "June 2025",
     link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
     imageUrl: "/images/IMG_20240526_181808_884.png"
   },
   {
-    title: "Operations Leader of the Year: Transforming Traditional Media Workflows",
-    source: "The Star Prime Awards",
-    type: "Award",
-    desc: "Awarded for the conceptualization, design, and organization-wide rollout of the Star Prime AI OS.",
-    date: "December 2024",
-    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/"
+    title: "Corporate Consultation & Technical Project Kickoff",
+    source: "Consulting Leadership Briefs",
+    type: "Interview",
+    desc: "Rahul V. Jadhav conducting a strategic project kickoff session with corporate partners, bridging business-centric requirements with technical developer roadmaps for consulting firms like Beyond Transform.",
+    date: "November 2025",
+    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    imageUrl: "/images/IMG_20251119_095737_041.png"
   },
   {
-    title: "The Future of Outbound Enterprise Sales Automation",
+    title: "Operations Round-Table & C-Suite Networking",
+    source: "Modern B2B Sales Quarterly",
+    type: "Interview",
+    desc: "Rahul V. Jadhav participating in a round-table operations discussion with technology partners and industry executives, focusing on digital transformation, lead scoring automations, and rigid SLA metrics.",
+    date: "May 2025",
+    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    imageUrl: "/images/IMG_20251119_095737_240.png"
+  },
+  {
+    title: "Executive Profile Feature: Operations & Growth Strategy",
     source: "CIO Outlook Magazine",
     type: "Feature",
-    desc: "Rahul outlines the blueprint of modern Sales Navigator sequences and HubSpot-centric lead scoring logic.",
+    desc: "Official feature profile photograph of Rahul V. Jadhav, highlighting his career scaling B2B growth operations, managing cross-functional divisions, and integrating automated workflows.",
     date: "September 2024",
-    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/"
-  },
-  {
-    title: "Leading Teams with Data and Empathy",
-    source: "Insights Success Leaders",
-    type: "Interview",
-    desc: "An executive interview covering career progression, remote accountability huddles, and scaling B2B teams.",
-    date: "May 2024",
-    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/"
+    link: "https://www.linkedin.com/in/rahul-jadhav-38ba29216/",
+    imageUrl: "/images/IMG_20240523_012051_114.png"
   }
 ];
 

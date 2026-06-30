@@ -168,8 +168,16 @@ export default function CertificationsSection({ initialCerts }: CertificationsSe
               <p className="text-xs text-muted">Credential ID: {selectedCert.id} • Issued by {selectedCert.organization}</p>
             </div>
 
-            {/* Dynamic Certificate Mockup / Real Scanned Image */}
-            {selectedCert.imageUrl ? (
+            {/* Dynamic Certificate Mockup / Real Scanned Image / PDF Embed */}
+            {selectedCert.verifyUrl && selectedCert.verifyUrl.toLowerCase().endsWith('.pdf') ? (
+              <div className="w-full h-[450px] sm:h-[550px] relative bg-stone-100 border border-border rounded overflow-hidden shadow-inner">
+                <iframe 
+                  src={`${selectedCert.verifyUrl}#toolbar=0&navpanes=0`} 
+                  className="w-full h-full border-none"
+                  title={selectedCert.title}
+                />
+              </div>
+            ) : selectedCert.imageUrl ? (
               <div className="w-full aspect-[1.414/1] relative bg-stone-50 border border-border rounded overflow-hidden shadow-inner flex items-center justify-center">
                 <img 
                   src={selectedCert.imageUrl} 

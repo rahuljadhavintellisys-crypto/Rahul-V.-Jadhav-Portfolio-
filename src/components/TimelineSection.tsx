@@ -12,7 +12,6 @@ interface Role {
   responsibilities: string[];
   achievements: string[];
   impact: string;
-  imageUrl?: string;
 }
 
 const ROLES: Role[] = [
@@ -34,8 +33,7 @@ const ROLES: Role[] = [
       "Decreased development tracking overhead through centralized dashboards, saving team leads 8 hours/week.",
       "Reduced employee turnover by 30% through clear career progression tracks and structured reviews."
     ],
-    impact: "Drove high operational efficiency, eliminating project delays and aligning internal developer goals with direct business targets.",
-    imageUrl: "/images/IMG_20251119_095737_041.png"
+    impact: "Drove high operational efficiency, eliminating project delays and aligning internal developer goals with direct business targets."
   },
   {
     company: "The Star Prime Magazine",
@@ -53,8 +51,7 @@ const ROLES: Role[] = [
       "Cut editorial reporting overhead by 70%, shortening monthly magazine publishing cycles by 4 days.",
       "Expanded reader engagement and C-Suite participation rates by 120% through structured branding assets."
     ],
-    impact: "Modernized a traditional media brand into an automated, high-visibility digital-first executive platform.",
-    imageUrl: "/images/IMG_20240526_181808_884.png"
+    impact: "Modernized a traditional media brand into an automated, high-visibility digital-first executive platform."
   },
   {
     company: "The Entrepreneurial Chronicles",
@@ -203,92 +200,73 @@ export default function TimelineSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.25 }}
-                className="flex-1 flex flex-col md:flex-row gap-8"
+                className="space-y-6 flex-1"
               >
-                {/* Details Section */}
-                <div className="flex-1 space-y-6">
-                  {/* Role Header */}
-                  <div className="border-b border-border/60 pb-5">
-                    <span className="text-xs font-bold text-secondary uppercase tracking-wider block mb-1">
-                      {ROLES[activeRole].duration}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-foreground">
-                      {ROLES[activeRole].role}
-                    </h3>
-                    <p className="text-sm font-semibold text-primary dark:text-secondary mt-1">
-                      {ROLES[activeRole].company}
-                    </p>
-                  </div>
-
-                  {/* Overview */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
-                      Overview
-                    </h4>
-                    <p className="text-xs text-muted leading-relaxed">
-                      {ROLES[activeRole].overview}
-                    </p>
-                  </div>
-
-                  {/* Responsibilities */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
-                      Core Mandates
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-1.5 text-xs text-muted">
-                      {ROLES[activeRole].responsibilities.map((resp, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-secondary shrink-0 mt-1.5" />
-                          <span>{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Achievements */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs uppercase font-bold text-foreground tracking-wider flex items-center gap-1.5">
-                      <Award className="h-4 w-4 text-secondary" /> Key Milestones
-                    </h4>
-                    <ul className="space-y-2 text-xs text-muted">
-                      {ROLES[activeRole].achievements.map((ach, i) => (
-                        <li key={i} className="flex items-start gap-2 bg-background border border-border/50 p-2.5 rounded">
-                          <Star className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
-                          <span className="leading-relaxed">{ach}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Business Impact block */}
-                  <div className="pt-4 border-t border-border/50 flex items-start gap-3 mt-6">
-                    <div className="p-2 rounded bg-emerald-500/10 text-emerald-500 shrink-0">
-                      <TrendingUp className="h-4.5 w-4.5" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-500">Net Business Impact</span>
-                      <p className="text-xs text-muted font-medium mt-0.5">
-                        {ROLES[activeRole].impact}
-                      </p>
-                    </div>
-                  </div>
+                {/* Role Header */}
+                <div className="border-b border-border/60 pb-5">
+                  <span className="text-xs font-bold text-secondary uppercase tracking-wider block mb-1">
+                    {ROLES[activeRole].duration}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-foreground">
+                    {ROLES[activeRole].role}
+                  </h3>
+                  <p className="text-sm font-semibold text-primary dark:text-secondary mt-1">
+                    {ROLES[activeRole].company}
+                  </p>
                 </div>
 
-                {/* Right side role image badge */}
-                {ROLES[activeRole].imageUrl && (
-                  <div className="w-full md:w-56 flex flex-col gap-3 justify-center items-center shrink-0">
-                    <div className="w-full aspect-[4/5] rounded-lg border border-border bg-card p-2 shadow-md relative overflow-hidden group gold-glow">
-                      <img 
-                        src={ROLES[activeRole].imageUrl} 
-                        alt={ROLES[activeRole].company} 
-                        className="w-full h-full object-cover rounded object-top group-hover:scale-[1.03] transition-transform duration-500"
-                      />
-                    </div>
-                    <span className="text-[9px] uppercase font-bold tracking-widest text-muted">
-                      Execution Photo
-                    </span>
+                {/* Overview */}
+                <div className="space-y-2">
+                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
+                    Overview
+                  </h4>
+                  <p className="text-xs text-muted leading-relaxed">
+                    {ROLES[activeRole].overview}
+                  </p>
+                </div>
+
+                {/* Responsibilities */}
+                <div className="space-y-2">
+                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
+                    Core Mandates
+                  </h4>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-muted">
+                    {ROLES[activeRole].responsibilities.map((resp, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-secondary shrink-0 mt-1.5" />
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Achievements */}
+                <div className="space-y-2">
+                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider flex items-center gap-1.5">
+                    <Award className="h-4 w-4 text-secondary" /> Key Milestones
+                  </h4>
+                  <ul className="space-y-2 text-xs text-muted">
+                    {ROLES[activeRole].achievements.map((ach, i) => (
+                      <li key={i} className="flex items-start gap-2 bg-background border border-border/50 p-2.5 rounded">
+                        <Star className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{ach}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Business Impact block */}
+                <div className="pt-4 border-t border-border/50 flex items-start gap-3 mt-6">
+                  <div className="p-2 rounded bg-emerald-500/10 text-emerald-500 shrink-0">
+                    <TrendingUp className="h-4.5 w-4.5" />
                   </div>
-                )}
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-500">Net Business Impact</span>
+                    <p className="text-xs text-muted font-medium mt-0.5">
+                      {ROLES[activeRole].impact}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -338,14 +316,6 @@ export default function TimelineSection() {
                         <span className="text-[10px] font-extrabold uppercase text-foreground tracking-wider block">Overview</span>
                         <p className="text-xs text-muted leading-relaxed">{role.overview}</p>
                       </div>
-
-                      {role.imageUrl && (
-                        <div className="w-full flex justify-center py-2">
-                          <div className="w-full max-w-[200px] aspect-[4/5] rounded-lg border border-border p-2 bg-card gold-glow">
-                            <img src={role.imageUrl} alt={role.company} className="w-full h-full object-cover rounded object-top" />
-                          </div>
-                        </div>
-                      )}
 
                       {/* Mandates */}
                       <div className="space-y-1.5">
