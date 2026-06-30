@@ -1,5 +1,23 @@
 [
   {
+    "id": "cert-google-india-leo",
+    "title": "LEO Kids and Family Program Online Workshop",
+    "organization": "Google India & upEducators",
+    "issueDate": "2026-06",
+    "verifyUrl": "/docs/leo-kids-family-program-2026.pdf",
+    "imageUrl": "",
+    "tags": ["Google India", "LEO Program", "Education"]
+  },
+  {
+    "id": "cert-google-super-searchers",
+    "title": "Super Searchers Workshop",
+    "organization": "Google & upEducators",
+    "issueDate": "2026-06",
+    "verifyUrl": "/docs/super-searchers-workshop-2026.pdf",
+    "imageUrl": "",
+    "tags": ["Google", "Search Engine", "Research"]
+  },
+  {
     "id": "cert-certified-ai-professional",
     "title": "Become a Certified AI Professional in 2026",
     "organization": "WsCube Tech",

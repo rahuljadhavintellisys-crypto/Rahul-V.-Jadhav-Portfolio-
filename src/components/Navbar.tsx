@@ -85,7 +85,7 @@ export default function Navbar() {
             <ThemeToggle />
             <Link
               href="/schedule"
-              className="inline-flex items-center gap-1 bg-primary text-white dark:bg-secondary dark:text-background font-semibold text-sm px-5 py-2.5 rounded hover:bg-primary-hover dark:hover:bg-secondary-hover transition-colors duration-200"
+              className="btn-premium btn-gold-glow gap-1 px-5 py-2.5 rounded text-sm hover:scale-[1.03]"
             >
               Let's Connect <ArrowUpRight className="h-4 w-4" />
             </Link>
@@ -130,7 +130,7 @@ export default function Navbar() {
                 <Link
                   href="/schedule"
                   onClick={handleNavClick}
-                  className="w-full text-center inline-flex items-center justify-center gap-1 bg-primary text-white dark:bg-secondary dark:text-background font-semibold py-3 rounded hover:bg-primary-hover dark:hover:bg-secondary-hover transition-colors duration-200"
+                  className="w-full btn-premium btn-gold-glow gap-1 py-3 rounded text-sm hover:scale-[1.03]"
                 >
                   Let's Connect <ArrowUpRight className="h-4 w-4" />
                 </Link>

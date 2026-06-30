@@ -12,6 +12,7 @@ interface Role {
   responsibilities: string[];
   achievements: string[];
   impact: string;
+  imageUrl?: string;
 }
 
 const ROLES: Role[] = [
@@ -19,37 +20,41 @@ const ROLES: Role[] = [
     company: "Intellisys IT Solutions Pvt. Ltd.",
     role: "Head of Team Operations",
     duration: "Present",
-    overview: "Leading cross-functional software development and team operations. Established a standard operations framework to ensure high alignment, strict SLA metrics, and clear tracking mechanisms for hybrid engineering sprints.",
+    overview: "Leading cross-functional software development and team operations. Orchestrated technical project leadership from planning through rollout, hosting kickoff meetings, analyzing business modules, and managing developer roadmaps. Successfully delivered complex website implementations for leading consulting firms, including Beyond Transform, bridging technical staff and corporate stakeholders.",
     responsibilities: [
+      "Conducting technical kickoff sessions, auditing legacy codebase architectures, and coordinating development milestones.",
+      "Bridging communication between non-technical business stakeholders and engineering execution teams.",
       "Overseeing daily huddles, sprint planning, and operational alignment boards.",
       "Coordinating with project managers and client advocates to balance resource allocation.",
-      "Designing custom KPI frameworks to measure individual performance and sprint velocity.",
-      "Leading technical process optimization and implementing workflow automation scripts."
+      "Designing custom KPI frameworks to measure individual performance and sprint velocity."
     ],
     achievements: [
+      "Led website implementation and module migration projects for top-tier consulting firms like Beyond Transform.",
       "Optimized company-wide SLA compliance rating to a consistent 98.5% (up from 88%).",
       "Decreased development tracking overhead through centralized dashboards, saving team leads 8 hours/week.",
       "Reduced employee turnover by 30% through clear career progression tracks and structured reviews."
     ],
-    impact: "Drove high operational efficiency, eliminating project delays and aligning internal developer goals with direct business targets."
+    impact: "Drove high operational efficiency, eliminating project delays and aligning internal developer goals with direct business targets.",
+    imageUrl: "/images/IMG_20251119_095737_041.png"
   },
   {
     company: "The Star Prime Magazine",
     role: "Head of Operations",
     duration: "Present (Leadership Role)",
-    overview: "Managing administrative, publication, and media operations. Responsible for editor workflows, sponsor relations, and content production scheduling for executive profiles and branding features.",
+    overview: "Directing media launch execution, branding, and publication operations. Managed end-to-end content launch strategies from scratch, developing thematic business bulletins and high-impact executive publications focused on emerging business trends.",
     responsibilities: [
+      "Coordinating end-to-end content development, branding strategy, and launch execution.",
+      "Creating future-focused business bulletins and profiling features targeting CXO executives.",
       "Streamlining publication workflows from submission to layout and final digital distribution.",
-      "Managing advertisement, sales, and sponsor client pipelines.",
-      "Advising editorial teams on target industry issues and CXO profile targets.",
-      "Architecting digital-first publication tools to reduce turnaround times."
+      "Managing advertisement, sales, and sponsor client pipelines."
     ],
     achievements: [
       "Spearheaded the creation of the Star Prime AI OS, which automated manual status checking and workflow tracking.",
       "Cut editorial reporting overhead by 70%, shortening monthly magazine publishing cycles by 4 days.",
       "Expanded reader engagement and C-Suite participation rates by 120% through structured branding assets."
     ],
-    impact: "Modernized a traditional media brand into an automated, high-visibility digital-first executive platform."
+    impact: "Modernized a traditional media brand into an automated, high-visibility digital-first executive platform.",
+    imageUrl: "/images/IMG_20240526_181808_884.png"
   },
   {
     company: "The Entrepreneurial Chronicles",
@@ -104,11 +109,12 @@ const ROLES: Role[] = [
     company: "CIO Outlook Magazine",
     role: "Team Leader",
     duration: "Previous Role",
-    overview: "Supervised high-velocity B2B media outreach and interview pipelines. Focused on lead generation, database cleanups, and training junior account representatives.",
+    overview: "Supervised B2B media outreach and client accounts. Managed corporate campaigns and project execution from initial planning through publication delivery, aligning cross-functional design and editorial teams to ensure seamless client satisfaction.",
     responsibilities: [
       "Supervising a team of 10+ business development professionals.",
       "Targeting and qualifying CXOs and tech decision-makers for publication features.",
-      "Conducting initial brand alignment audits with prospective executives."
+      "Conducting initial brand alignment audits with prospective executives.",
+      "Coordinating multiple internal and external stakeholders to deliver monthly editorial layouts."
     ],
     achievements: [
       "Consistently achieved 115%+ of team sales quotas quarter-over-quarter.",
@@ -120,7 +126,7 @@ const ROLES: Role[] = [
     company: "Insights Success",
     role: "Senior Business Development Executive",
     duration: "Previous Role",
-    overview: "Initiated outbound outreach, client relations, and brand sponsorship sales. Developed scripts for pitching branding value and digital marketing services to startup founders.",
+    overview: "Led client relationship channels, B2B sales cycles, and post-sale project execution. Managed corporate campaigns from contract signing to final publication delivery, coordinating multiple stakeholders and ensuring cross-team execution.",
     responsibilities: [
       "Identifying, contacting, and pitching corporate marketing packages to founders.",
       "Securing contracts, drafting sponsorship proposals, and closing key corporate accounts.",
@@ -161,15 +167,16 @@ export default function TimelineSection() {
               <button
                 key={idx}
                 onClick={() => setActiveRole(idx)}
-                className={`w-full text-left p-4 rounded-lg border transition-all duration-200 cursor-pointer flex items-start gap-3.5 focus:outline-none ${
-                  activeRole === idx
-                    ? 'border-primary bg-primary/5 text-primary dark:border-secondary dark:bg-secondary/5 dark:text-secondary'
-                    : 'border-border/60 bg-card hover:bg-accent/60'
-                }`}
+                className="w-full text-left p-4 rounded-lg border transition-all duration-200 cursor-pointer flex items-start gap-3.5 focus:outline-none border-border/60 bg-card hover:bg-accent/60 active:scale-[0.98]"
+                style={{
+                  borderColor: activeRole === idx ? 'var(--color-primary, #EDC531)' : 'rgba(255,255,255,0.08)',
+                  backgroundColor: activeRole === idx ? 'rgba(237,201,49,0.05)' : ''
+                }}
               >
-                <div className={`p-2 rounded shrink-0 ${
-                  activeRole === idx ? 'bg-primary text-white dark:bg-secondary dark:text-background' : 'bg-accent text-muted'
-                }`}>
+                <div className="p-2 rounded shrink-0" style={{
+                  backgroundColor: activeRole === idx ? 'var(--color-primary, #EDC531)' : 'rgba(255,255,255,0.08)',
+                  color: activeRole === idx ? '#0B1020' : '#8892B0'
+                }}>
                   <Briefcase className="h-4.5 w-4.5" />
                 </div>
                 <div className="min-w-0">
@@ -196,74 +203,92 @@ export default function TimelineSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.25 }}
-                className="space-y-6 flex-1"
+                className="flex-1 flex flex-col md:flex-row gap-8"
               >
-                {/* Role Header */}
-                <div className="border-b border-border/60 pb-5">
-                  <span className="text-xs font-bold text-secondary uppercase tracking-wider block mb-1">
-                    {ROLES[activeRole].duration}
-                  </span>
-                  <h3 className="text-2xl font-heading font-extrabold text-foreground">
-                    {ROLES[activeRole].role}
-                  </h3>
-                  <p className="text-sm font-semibold text-primary dark:text-secondary mt-1">
-                    {ROLES[activeRole].company}
-                  </p>
-                </div>
-
-                {/* Overview */}
-                <div className="space-y-2">
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
-                    Overview
-                  </h4>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {ROLES[activeRole].overview}
-                  </p>
-                </div>
-
-                {/* Responsibilities */}
-                <div className="space-y-2">
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
-                    Core Mandates
-                  </h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-muted">
-                    {ROLES[activeRole].responsibilities.map((resp, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="h-1.5 w-1.5 rounded-full bg-secondary shrink-0 mt-1.5" />
-                        <span>{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Achievements */}
-                <div className="space-y-2">
-                  <h4 className="text-xs uppercase font-bold text-foreground tracking-wider flex items-center gap-1.5">
-                    <Award className="h-4 w-4 text-secondary" /> Key Milestones
-                  </h4>
-                  <ul className="space-y-2 text-xs text-muted">
-                    {ROLES[activeRole].achievements.map((ach, i) => (
-                      <li key={i} className="flex items-start gap-2 bg-background border border-border/50 p-2.5 rounded">
-                        <Star className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
-                        <span className="leading-relaxed">{ach}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Business Impact block */}
-                <div className="pt-4 border-t border-border/50 flex items-start gap-3 mt-6">
-                  <div className="p-2 rounded bg-emerald-500/10 text-emerald-500 shrink-0">
-                    <TrendingUp className="h-4.5 w-4.5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-500">Net Business Impact</span>
-                    <p className="text-xs text-muted font-medium mt-0.5">
-                      {ROLES[activeRole].impact}
+                {/* Details Section */}
+                <div className="flex-1 space-y-6">
+                  {/* Role Header */}
+                  <div className="border-b border-border/60 pb-5">
+                    <span className="text-xs font-bold text-secondary uppercase tracking-wider block mb-1">
+                      {ROLES[activeRole].duration}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-foreground">
+                      {ROLES[activeRole].role}
+                    </h3>
+                    <p className="text-sm font-semibold text-primary dark:text-secondary mt-1">
+                      {ROLES[activeRole].company}
                     </p>
                   </div>
+
+                  {/* Overview */}
+                  <div className="space-y-2">
+                    <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
+                      Overview
+                    </h4>
+                    <p className="text-xs text-muted leading-relaxed">
+                      {ROLES[activeRole].overview}
+                    </p>
+                  </div>
+
+                  {/* Responsibilities */}
+                  <div className="space-y-2">
+                    <h4 className="text-xs uppercase font-bold text-foreground tracking-wider">
+                      Core Mandates
+                    </h4>
+                    <ul className="grid grid-cols-1 gap-1.5 text-xs text-muted">
+                      {ROLES[activeRole].responsibilities.map((resp, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="h-1.5 w-1.5 rounded-full bg-secondary shrink-0 mt-1.5" />
+                          <span>{resp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Achievements */}
+                  <div className="space-y-2">
+                    <h4 className="text-xs uppercase font-bold text-foreground tracking-wider flex items-center gap-1.5">
+                      <Award className="h-4 w-4 text-secondary" /> Key Milestones
+                    </h4>
+                    <ul className="space-y-2 text-xs text-muted">
+                      {ROLES[activeRole].achievements.map((ach, i) => (
+                        <li key={i} className="flex items-start gap-2 bg-background border border-border/50 p-2.5 rounded">
+                          <Star className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{ach}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Business Impact block */}
+                  <div className="pt-4 border-t border-border/50 flex items-start gap-3 mt-6">
+                    <div className="p-2 rounded bg-emerald-500/10 text-emerald-500 shrink-0">
+                      <TrendingUp className="h-4.5 w-4.5" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-500">Net Business Impact</span>
+                      <p className="text-xs text-muted font-medium mt-0.5">
+                        {ROLES[activeRole].impact}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
+                {/* Right side role image badge */}
+                {ROLES[activeRole].imageUrl && (
+                  <div className="w-full md:w-56 flex flex-col gap-3 justify-center items-center shrink-0">
+                    <div className="w-full aspect-[4/5] rounded-lg border border-border bg-card p-2 shadow-md relative overflow-hidden group gold-glow">
+                      <img 
+                        src={ROLES[activeRole].imageUrl} 
+                        alt={ROLES[activeRole].company} 
+                        className="w-full h-full object-cover rounded object-top group-hover:scale-[1.03] transition-transform duration-500"
+                      />
+                    </div>
+                    <span className="text-[9px] uppercase font-bold tracking-widest text-muted">
+                      Execution Photo
+                    </span>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -313,6 +338,14 @@ export default function TimelineSection() {
                         <span className="text-[10px] font-extrabold uppercase text-foreground tracking-wider block">Overview</span>
                         <p className="text-xs text-muted leading-relaxed">{role.overview}</p>
                       </div>
+
+                      {role.imageUrl && (
+                        <div className="w-full flex justify-center py-2">
+                          <div className="w-full max-w-[200px] aspect-[4/5] rounded-lg border border-border p-2 bg-card gold-glow">
+                            <img src={role.imageUrl} alt={role.company} className="w-full h-full object-cover rounded object-top" />
+                          </div>
+                        </div>
+                      )}
 
                       {/* Mandates */}
                       <div className="space-y-1.5">

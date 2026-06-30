@@ -98,14 +98,14 @@ export default function HeroSection() {
           >
             <Link
               href="/projects"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white dark:bg-secondary dark:text-background dark:hover:bg-secondary-hover font-bold px-7 py-3.5 rounded transition-all duration-200 cursor-pointer shadow-md shadow-primary/10 dark:shadow-secondary/10 hover:scale-[1.02]"
+              className="w-full sm:w-auto btn-premium btn-gold-glow gap-2 px-7 py-3.5 rounded text-sm hover:scale-[1.05]"
             >
               Explore Case Studies <ArrowRight className="h-4.5 w-4.5" />
             </Link>
             
             <Link
               href="/#journey"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-border bg-card text-foreground hover:bg-accent font-bold px-7 py-3.5 rounded transition-all duration-200 cursor-pointer hover:scale-[1.02]"
+              className="w-full sm:w-auto btn-premium border border-border bg-card text-foreground hover:bg-accent gap-2 px-7 py-3.5 rounded text-sm hover:scale-[1.05]"
             >
               My Journey
             </Link>
@@ -114,7 +114,7 @@ export default function HeroSection() {
               href="/docs/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-border bg-card text-foreground hover:bg-accent font-semibold px-5 py-3.5 rounded transition-colors duration-200 cursor-pointer text-sm hover:scale-[1.02]"
+              className="w-full sm:w-auto btn-premium border border-border bg-card text-foreground hover:bg-accent gap-2 px-5 py-3.5 rounded text-sm hover:scale-[1.05]"
             >
               <FileText className="h-4.5 w-4.5 text-secondary" /> Resume
             </a>

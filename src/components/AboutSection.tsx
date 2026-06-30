@@ -24,21 +24,41 @@ export default function AboutSection() {
           
           {/* Left Side: Short Bio / Key highlights */}
           <div className="lg:col-span-7 space-y-6 flex flex-col">
-            <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground">
-              A Leadership Story Forged in Execution
-            </h3>
-            
-            <p className="text-muted text-sm sm:text-base leading-relaxed">
-              Rahul V. Jadhav is an operations executive and growth strategist who has spent a decade building and scaling business development teams, technology divisions, and media properties. Over his career, he has successfully transitioned from front-line client acquisition to structuring enterprise operations and leading digital transformation initiatives.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div className="md:col-span-7 space-y-4">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground">
+                  Operations Leadership & B2B Growth Strategy
+                </h3>
+                <p className="text-muted text-xs sm:text-sm leading-relaxed">
+                  I partner with technology companies, consulting firms, and modern media groups to structure their daily operations, remove delivery bottlenecks, and connect sales pipelines with automated workflow execution. Rather than relying on generic advisory templates, my approach focuses on building rigid, self-documenting SLA frameworks and deploying custom automation scripts that empower team leaders to coordinate with full transparency.
+                </p>
+                <p className="text-muted text-xs sm:text-sm leading-relaxed">
+                  Currently directing team operations at Intellisys IT Solutions Pvt. Ltd., I also oversee operational frameworks and executive profiling pipelines for The Star Prime Magazine. My career is defined by transforming manual tasks into streamlined, software-driven pipelines, helping organizations cut administrative overhead while scaling client success.
+                </p>
+              </div>
+              <div className="md:col-span-5 flex justify-center">
+                <div className="w-full max-w-[240px] aspect-[4/5] rounded-lg border border-border/80 bg-card p-2 shadow-lg relative overflow-hidden group gold-glow hover:scale-[1.02] transition-transform duration-300">
+                  <img 
+                    src="/images/IMG_20240523_012051_114.png" 
+                    alt="Rahul V. Jadhav" 
+                    className="w-full h-full object-cover rounded object-top"
+                  />
+                  <div className="absolute bottom-3 left-3 bg-background/80 backdrop-blur-xs text-[9px] px-2 py-0.5 rounded font-extrabold text-secondary border border-border/40 uppercase">
+                    Executive Profile
+                  </div>
+                </div>
+              </div>
+            </div>
 
-            <p className="text-muted text-sm sm:text-base leading-relaxed">
-              Currently serving as the <strong>Head of Team Operations</strong> at Intellisys IT Solutions Pvt. Ltd. and holding an additional leadership post as the <strong>Head of Operations</strong> for The Star Prime Magazine, Rahul is dedicated to optimizing business systems. His work centers around establishing rigid service-level execution pathways, reducing administrative waste, and leveraging AI workflow integrations.
-            </p>
-
-            <p className="text-muted text-sm sm:text-base leading-relaxed">
-              Rahul’s unique vantage point combines core Sales Strategy, Project Management frameworks, and Modern Artificial Intelligence models. This enables him to consult for founders and C-Suite leaders, helping them build highly accountable teams and implement systems that drive real, measurable bottom-line growth.
-            </p>
+            {/* Core Domain Expertise section */}
+            <div className="bg-primary/5 dark:bg-secondary/5 border border-primary/10 dark:border-secondary/15 p-5 rounded-lg space-y-2">
+              <h4 className="font-heading font-extrabold text-xs uppercase tracking-widest text-secondary flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" /> Specialized Domain Exposure
+              </h4>
+              <p className="text-xs text-muted leading-relaxed">
+                Bridging complex, rapidly evolving sectors like <strong>FinTech, Orbital Logistics, and Sustainable Industry Leadership</strong> requires more than standard operational templates. I translate sophisticated technical requirements into highly structured business operations, clean positioning, and high-impact executive content, establishing market authority for companies in deep-tech and heavily regulated spaces.
+              </p>
+            </div>
 
             {/* Core Leadership Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
@@ -75,6 +95,16 @@ export default function AboutSection() {
               </div>
             </div>
 
+            {/* Revenue Operations integration */}
+            <div className="border border-border/80 bg-primary/5 dark:bg-secondary/5 p-5 rounded-lg space-y-2">
+              <h4 className="font-heading font-extrabold text-xs uppercase tracking-widest text-secondary flex items-center gap-2">
+                <Target className="h-4.5 w-4.5 text-secondary" /> Revenue Operations & Pipeline Automation
+              </h4>
+              <p className="text-xs text-muted leading-relaxed">
+                Drive revenue operations by integrating automation and lead generation platforms—including Make, Apollo.io, and LinkedIn Sales Navigator—directly into structured sales pipelines, CRM workflows, and lead management systems, improving operational efficiency and business growth.
+              </p>
+            </div>
+
             {/* Quick Operational Metrics Box */}
             <div className="p-5 bg-primary/5 dark:bg-secondary/5 border border-primary/10 dark:border-secondary/10 rounded-lg flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6">
               <div className="space-y-1 flex-1">
@@ -105,22 +135,22 @@ export default function AboutSection() {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Quick Pitch Board */}
-            <div className="border border-border bg-background p-6 sm:p-8 rounded-lg relative overflow-hidden blue-glow">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-primary" />
-              <h3 className="font-heading font-bold text-lg text-foreground mb-4">Core Philosophy</h3>
-              
-              <blockquote className="text-sm italic text-muted leading-relaxed mb-6">
-                "Growth is not the result of random marketing campaigns or heroic sales efforts. True, sustainable expansion is built on reliable, repeatable operational systems and empowered teams that execute with clarity."
-              </blockquote>
-              
-              <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Award className="h-5 w-5 text-primary dark:text-secondary" />
-                </div>
-                <div>
+            <div className="border border-border bg-background p-6 sm:p-8 rounded-lg relative overflow-hidden blue-glow flex flex-col md:flex-row gap-6 items-center">
+              <div className="flex-1 space-y-4">
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">Core Philosophy</h3>
+                <blockquote className="text-xs italic text-muted leading-relaxed mb-4">
+                  "Growth is not the result of random marketing campaigns or heroic sales efforts. True, sustainable expansion is built on reliable, repeatable operational systems and empowered teams that execute with clarity."
+                </blockquote>
+                <div className="flex items-center gap-2">
                   <span className="block text-xs font-bold uppercase tracking-wider text-secondary">Rahul V. Jadhav</span>
-                  <span className="block text-[10px] text-muted">Operations & Growth Strategist</span>
                 </div>
+              </div>
+              <div className="w-[120px] h-[120px] rounded-lg border border-border overflow-hidden shrink-0 shadow-md">
+                <img 
+                  src="/images/IMG_20251119_095737_240.png" 
+                  alt="Executive Discussion" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
 
